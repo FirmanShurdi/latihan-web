@@ -1,0 +1,35 @@
+<%- include('partials/header') %>
+
+<h2>Daftar Objek</h2>
+
+<a href="/admin/tambah" class="btn btn-success mb-3">+ Tambah Objek</a>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>Nama</th>
+            <th>Gambar</th>
+            <th>Audio</th>
+            <th>Kategori</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% data.forEach((objek, index) => { %>
+        <tr>
+            <td><%= index + 1 %></td>
+            <td><%= objek.nama %></td>
+            <td><img src="/img/<%= objek.image %>" width="100"></td>
+            <td>
+                <audio controls>
+                    <source src="/audio/<%= objek.audio %>" type="audio/mpeg">
+                    Browser tidak mendukung pemutar audio.
+                </audio>
+            </td>
+            <td><%= objek.kategori %></td>
+        </tr>
+        <% }) %>
+    </tbody>
+</table>
+
+<%- include('partials/footer') %>

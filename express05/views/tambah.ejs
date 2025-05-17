@@ -1,0 +1,33 @@
+<%- include('partials/header') %>
+
+<h2>Tambah Objek Baru</h2>
+
+<form action="/admin/tambah" method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+        <label>Nama Objek:</label>
+        <input type="text" name="nama" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+        <label>Gambar (JPG/PNG):</label>
+        <input type="file" name="image" accept="image/*" class="form-control-file" required>
+    </div>
+
+    <div class="form-group">
+        <label>Audio (MP3):</label>
+        <input type="file" name="audio" accept="audio/mpeg" class="form-control-file" required>
+    </div>
+
+    <div class="form-group">
+        <label>Kategori:</label>
+        <select name="kategori_id" class="form-control" required>
+            <% kategori.forEach(kat => { %>
+            <option value="<%= kat.id %>"><%= kat.nama %></option>
+            <% }) %>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Simpan</button>
+</form>
+
+<%- include('partials/footer') %>
